@@ -25,7 +25,7 @@ Sucesso! A saída do comando executado no host remoto é exibida no terminal.
 
 
 #### Observação:  
-Note que o hostname R1 está no inicio do comando neste segundo exemplo e no final do primeiro. É indiferente!  
+Note que o hostname R1 está no inicio do comando neste segundo exemplo e no final do primeiro. Sim, é indiferente!  
 Os comanandos abaixo são equivalentes:  
 `ansible R1 -m ios_command -a "commands='show ip route'"`  
 `ansible -m ios_command -a "commands='show ip route'" R1`
