@@ -13,7 +13,7 @@ O comando adhoc é uma eficiente ferramenta de automatização e provavelmente a
 
 ## Módulo ping
 Neste primeiro exemplo utilizaremos o módulo ping `[-m ping]` do Ansible para testar a conectividade com o host R1:
-![pingr1](https://user-images.githubusercontent.com/87205124/125204488-fe354900-e253-11eb-91a3-b674f2bd850c.JPG)
+![pingr1](https://user-images.githubusercontent.com/87205124/125204488-fe354900-e253-11eb-91a3-b674f2bd850c.JPG "módulo ping")
 
 
 
@@ -21,7 +21,7 @@ Neste primeiro exemplo utilizaremos o módulo ping `[-m ping]` do Ansible para t
 
 ## Módulo ios_command
 Agora vamos de fato executar uma tarefa remotamente: Acessar R1 e rodar o comando *"show ip interface brief"*
-![ios_command1](https://user-images.githubusercontent.com/87205124/125204518-202ecb80-e254-11eb-88af-3db86e14ce70.JPG)  
+![ios_command1](https://user-images.githubusercontent.com/87205124/125204518-202ecb80-e254-11eb-88af-3db86e14ce70.JPG "ios_command")  
 Sucesso! A saída do comando executado no host remoto é exibida no terminal.
 
 
