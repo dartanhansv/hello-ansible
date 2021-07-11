@@ -10,9 +10,39 @@ O comando adhoc é uma eficiente ferramenta de automatização e provavelmente a
 
 
 
-## Exemplos
-ansible R1 -m ios_command -a "commands='show ip route'"
 
-ansible R1 -m ios_command -a "commands='show ip interface brief'"
+## Módulo ping
+Neste primeiro exemplo utilizaremos o módulo ping `[-m ping]` do Ansible para testar a conectividade com o host R1:
+![ping](./source/pingr1.jpg)
 
 
+
+
+## Módulo ios_command
+Agora vamos de fato executar uma tarefa remotamente: Acessar R1 e rodar o comando *"show ip interface brief"*
+![ios_command](./source/ios_command1.jpg)
+Sucesso! A saída do comando executado no host remoto é exibida no terminal.
+
+
+#### Observação:  
+Note que o hostname R1 está no inicio do comando neste segundo exemplo e no final do primeiro. É indiferente!  
+Os comanandos abaixo são equivalentes:  
+`ansible R1 -m ios_command -a "commands='show ip route'"`  
+`ansible -m ios_command -a "commands='show ip route'" R1`
+
+
+
+
+## Sensacional! Mas o que foi automatizado?  
+Nada!  
+ Utilizar o Ansible para remotamente executar um comando em um host gera até mais trabalho (digitação) que logar no host e executar o comando diretamente nele. Não faz sentido!  
+
+ Mas calma! Foi apenas um exemplo.  
+   
+   Agora imagine uma tarefa que demande executar o mesmo comando em vários hosts, consultar a rota default de 100 roteadores, por exemplo.  
+   Pensou? Sem uma ferramenta de automação seria necessário digitar seu login, sua senha e comando *"show ip route 0.0.0.0"* 100 vezes, enquanto que no Ansible a tarefa seria executada com apenas um comando:
+
+
+ `ansible all -m ios_command -a "commands='show ip route 0.0.0.0'"`
+
+ Perceba a sintaxe praticamente idêntica ao exemplo anterior, a única diferença é a substituição do hostname *"R1"* por *"all"*. Esse parâmetro indica que o comando ad-hoc será executado em todos os hosts configurados no arquivo de inventário.  
