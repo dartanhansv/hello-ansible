@@ -46,4 +46,4 @@ Nada!
 
  `ansible all -m ios_command -a "commands='show ip route 0.0.0.0'"`
 
- Perceba a sintaxe praticamente idêntica ao exemplo anterior, a única diferença é a substituição do hostname *"R1"* por *"all"*. Esse parâmetro indica que o comando ad-hoc será executado em todos os hosts configurados no arquivo de inventário.  
+ Perceba a sintaxe praticamente idêntica ao exemplo anterior, porém com uma sútil diferença: a substituição do hostname *"R1"* por *"all"*. Esse parâmetro indica que o comando ad-hoc será executado em todos os hosts configurados no arquivo de inventário.  
