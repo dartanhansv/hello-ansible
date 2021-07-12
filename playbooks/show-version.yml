@@ -1,0 +1,13 @@
+
+---
+- name: Check Version
+  hosts: all
+  gather_facts: false
+
+
+  tasks:
+          - name: Show Version on Cisco IOS
+            ios_command:
+                    commands: show version
+            register: ios
+
