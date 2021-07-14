@@ -1,0 +1,29 @@
+
+---
+- name: Check Version
+  hosts: all
+  gather_facts: false
+
+
+  tasks:
+  - name: Show Version on Cisco IOS
+    ios_command:
+            commands: 
+            - show clock
+            - show running-config
+    register: bkp
+
+
+  - name: Save to file Cisco IOS
+    copy:
+      dest: "/etc/ansible/routers/{{inventory_hostname}}.txt"
+      content: 
+        -----
+        show clock
+        {{ bkp.stdout[0] }}
+
+        -----
+        show runn
+        {{ bkp.stdout[1] }}
+
+
