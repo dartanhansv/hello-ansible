@@ -6,7 +6,7 @@
 
 
   tasks:
-  - name: Show Version on Cisco IOS
+  - name: show clock and show version on Cisco IOS
     ios_command:
             commands: 
             - show clock
@@ -14,7 +14,7 @@
     register: bkp
 
 
-  - name: Save to file Cisco IOS
+  - name: Save output to a file
     copy:
       dest: "/etc/ansible/routers/{{inventory_hostname}}.txt"
       content: 
