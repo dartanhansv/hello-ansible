@@ -1,4 +1,7 @@
-R1 ansible_host=ios-xe-mgmt.cisco.com
+
+
+[ios]
+R1 ansible_host=sandbox-iosxe-latest-1.cisco.com
 
 
 [ios:vars]

@@ -1,0 +1,19 @@
+
+---
+- name: Check Version
+  hosts: all
+  gather_facts: false
+
+
+  tasks:
+          - name: Show Version on Cisco IOS
+            ios_command:
+                    commands: 
+                    - show running-config
+            register: ios
+
+
+          - name: Save to file Cisco IOS
+            copy:
+                    content: "{{ ios.stdout[0]}}"
+                    dest: "/etc/ansible/routers/{{inventory_hostname}}.txt"
