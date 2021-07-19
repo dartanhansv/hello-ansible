@@ -1,0 +1,22 @@
+---
+- hosts: asr
+  gather_facts: false
+  connection: local
+
+
+  tasks:
+
+     - name: Gather all iosxr facts
+       cisco.iosxr.iosxr_facts:
+
+     - name: show all iosxr facts 
+       debug:
+         var: ansible_facts.keys()
+
+     - name: show hostname
+       debug:
+         var: ansible_net_hostname
+     
+     - name: show version
+       debug:
+         var: ansible_net_version
