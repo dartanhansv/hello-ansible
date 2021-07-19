@@ -1,0 +1,49 @@
+---
+- name: show ipv6 routing table
+  hosts: all
+  gather_facts: false
+
+  tasks:
+          - name: Huawei routing table
+            ce_command:
+                    commands:
+                        - 'display ipv6 routing-table :: 0'
+            register: vrp
+            when: ansible_network_os == 'ce'
+
+          - name:  Cisco IOS XR routing table
+            cisco.iosxr.iosxr_command:
+                    commands:
+                        - show route ipv6 unicast ::/0
+            register: iosxr
+            when: ansible_network_os == 'cisco.iosxr.iosxr'
+
+          - name: Cisco IOS routing table
+            cli_command:
+                    command: show ipv6 route ::/0
+            register: ios
+            when: ansible_network_os == 'ios'
+
+
+
+
+
+          - name: Save to file IOS XR
+            copy:
+                    content: "{{ iosxr.stdout[0]}}"
+                    dest: "/etc/ansible/redes/{{inventory_hostname}}.txt"
+            when: ansible_network_os == 'cisco.iosxr.iosxr'              
+
+
+          - name: Save to file Cisco IOS
+            copy:
+                    content: "{{ ios.stdout[0]}}"
+                    dest: "/etc/ansible/redes/{{inventory_hostname}}.txt"
+            when: ansible_network_os == 'ios'
+
+
+          - name: Save to file
+            copy:
+                    content: " {{ vrp.stdout[0]}}"
+                    dest: "/etc/ansible/redes/{{inventory_hostname}}.txt"
+            when: ansible_network_os == 'ce'
